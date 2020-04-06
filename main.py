@@ -14,13 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+import os
+import jinja2
 import webapp2
 from google.appengine.api import urlfetch
 from google.appengine.api import memcache
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
+
         
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        return webapp2.redirect('/index.html')
+        template = JINJA_ENVIRONMENT.get_template('index.html')
+        self.response.write(template.render({}))
 
 class SiteList(webapp2.RequestHandler):
     def get(self):
