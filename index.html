@@ -11,26 +11,22 @@ crossorigin=""></script>
 <script src="/static/leaflet-providers.js"></script>
 <script src="/static/nunjucks.min.js"></script>
 <style>
-body {display:grid; 
-grid-template-areas: 'list'
-                     'map';
- grid-template-columns: 100vw; grid-template-rows: 50vh 50vh;}
-#mapid { grid-area: map; height: 100%; width:100%;}
-#list {grid-area:list;}
+body {display:flex; flex-wrap:wrap;} 
+#mapid {  height: 320px; width:100%;}
 </style>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>weather</title>
 </head>
 <body>
-    <main id="mapid"></main>
     <aside id="list"></aside>
+    <main id="mapid"></main>
  <script>
         function forecast(id) {
         fetch('/forecast/'+id)
         .then(r => {
             r.json()
             .then(d=>{
-                document.getElementById('list').innerHTML=nunjucks.render('static/forecast.html',d) ;
+                document.getElementById('list').innerHTML=nunjucks.render('static/forecastflex.html',d) ;
             })
         })
         }
@@ -42,18 +38,6 @@ grid-template-areas: 'list'
         const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
         //const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
         let found_you=false;
-        //var somersethouse = L.marker([51.511119, -0.117116]).addTo(map);
-        // const demelo = L.marker([54.5696464, -1.2389365]).addTo(map);
-//         demelo.bindPopup('De Meló Lounge<br><a href="">Homebrew Website Club Teesside</a>');
-        //var siamthai = L.marker([51.512063, -0.120157]).addTo(map);
-        
-        /*var coventGardenRadius = L.circle([51.512370, -0.124170], 
-        {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: 300
-        }).addTo(map);*/
         
         var watch = navigator.geolocation.watchPosition(locationUpdate, locationUpdateFail, 
         {

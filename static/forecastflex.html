@@ -1,0 +1,16 @@
+<style>
+.day {display:flex;}
+</style>
+<section class="location">
+<h2>{{SiteRep.DV.type}} for {{SiteRep.DV.Location.name}}</h2>
+{% for day in  SiteRep.DV.Location.Period %}
+ <div class="day">
+ {% for f in day.Rep %}
+<div class="hour"><div>{{f.$/60}}</div><img src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{f.W}}.svg" >
+<div>{{f.T}}°({{f.F}}°)
+{{f.Pp}}%<br>
+{{f.S}} {{f.D}}</div>
+</div>
+{% endfor %}
+</div>
+{% endfor %} 
