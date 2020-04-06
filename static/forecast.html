@@ -1,0 +1,16 @@
+
+<h2>{{SiteRep.DV.type}} for {{SiteRep.DV.Location.name}}</h2>
+{% for day in  SiteRep.DV.Location.Period %}
+ <h3>{{day.value}}</h3>
+ <table><thead><th>00<th>03<th>06<th>09<th>12<th>15<th>18<th>21</thead>
+ <tr>{% for f in day.Rep %}
+ <td><img src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{f.W}}.svg" >
+{% endfor %}</tr>
+<tr>{% for f in day.Rep %}<td>{{f.T}}°({{f.F}}°){% endfor %}</tr>
+<tr>{% for f in day.Rep %}<td>{{f.Pp}}%{% endfor %}</tr>
+<tr>{% for f in day.Rep %}<td>{{f.S}} {{f.D}}{% endfor %}</tr>
+</table>
+{% endfor %} 
+{% for i in range(0,31) %}
+<img src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{i}}.svg" >
+{% endfor %}
