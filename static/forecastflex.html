@@ -1,8 +1,9 @@
 <style>
 .day, .day-head {display:flex; justify-content: flex-end;
-font-family:"Gill Sans", "Roboto"; font-size:11px;text-align:center;}
+font-family: "Gill Sans", Roboto,Verdana, sans-serif; font-size:11px;text-align:center;}
 .hour, .day-head p {width:12.5vw;}
-h2 {font-size:1em;}
+.day-head {font-weight:600;}
+h2 {font-size:1em;margin:0;}
 .temps {display: flex; justify-content: space-evenly;}
 .temps p {flex:1;}
 .freezing {background:cyan;}
@@ -23,11 +24,11 @@ class="{{['icy','cold','chilly','cool','mild','warm','hot','scorcher'][(t//5)]}}
 {% endmacro %}
 <section class="location">
 <h2>{{SiteRep.DV.type}} for {{SiteRep.DV.Location.name}}</h2>
-<header class="day-head"><p>00<p>03<p>06<p>09<p>12<p>15<p>18<p>21</header>
+<header class="day-head"><p>12am<p>3am<p>6am<p>9am<p>noon<p>3pm<p>6pm<p>9pm</header>
 {% for day in  SiteRep.DV.Location.Period %}
  <div class="day">
  {% for f in day.Rep %}
-<div class="hour"><img max-width=100% src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{f.W}}.svg" >
+<div class="hour"><img width=80% src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{f.W}}.svg" >
 <div {{warmth(f.T)}}>{{f.T}}°<sub {{warmth(f.F)}}>{{f.F}}</sub><br>
 {{f.Pp}}%<br>
 {{f.S}}<sub>{{f.D}}</sub></div>
