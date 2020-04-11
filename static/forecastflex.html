@@ -1,6 +1,6 @@
 <style>
 .day, .day-head {display:flex; justify-content: flex-end;
-font-family:"Gill Sans", "Roboto"; font-size:10px;text-align:center;}
+font-family:"Gill Sans", "Roboto"; font-size:11px;text-align:center;}
 .hour, .day-head p {width:12.5vw;}
 h2 {font-size:1em;}
 .temps {display: flex; justify-content: space-evenly;}
@@ -30,7 +30,7 @@ class="{{['icy','cold','chilly','cool','mild','warm','hot','scorcher'][(t//5)]}}
 <div class="hour"><img max-width=100% src="https://www.metoffice.gov.uk/webfiles/latest/images/icons/weather/{{f.W}}.svg" >
 <div {{warmth(f.T)}}>{{f.T}}°<sub {{warmth(f.F)}}>{{f.F}}</sub><br>
 {{f.Pp}}%<br>
-{{f.S}} {{f.D}}</div>
+{{f.S}}<sub>{{f.D}}</sub></div>
 </div>
 {% endfor %}
 </div>
