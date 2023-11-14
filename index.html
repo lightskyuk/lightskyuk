@@ -3,12 +3,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-crossorigin=""></script>
-<script src="/static/leaflet-providers.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@latest/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
 <script src="/static/nunjucks.min.js"></script>
 <style>
 body {display:flex; flex-wrap:wrap; margin:0; font-family: "Gill Sans", Roboto,Verdana, sans-serif;} 
@@ -34,9 +31,10 @@ body {display:flex; flex-wrap:wrap; margin:0; font-family: "Gill Sans", Roboto,V
             forecast( e.target.options.locid);
         }
         const map = L.map('mapid').setView([54.53494, -1.1686988], 10);
-        //const tiles = L.tileLayer.provider('CartoDB.Voyager').addTo(map);
+        // const tiles = L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map);
+        const tiles = L.tileLayer.provider('Stadia.StamenTerrain').addTo(map);
         //const tiles = L.tileLayer.provider('Stamen.Watercolor').addTo(map);
-        const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
+        //const tiles = L.tileLayer.provider('Stamen.Terrain').addTo(map);
         let found_you=false;
         
         var watch = navigator.geolocation.watchPosition(locationUpdate, locationUpdateFail, 
